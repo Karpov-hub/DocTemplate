@@ -1,0 +1,13 @@
+{
+  "name": "admin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "watch": "node server.js",
+    "start": "forever --minUptime 5000 --uid 'doctemplate' -a start server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

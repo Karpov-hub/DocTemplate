@@ -1,0 +1,19 @@
+FROM ubuntu:20.04
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive && \
+    apt-get -y install openjdk-8-jdk wget curl unzip python3 g++ make rsync nano
+RUN wget http://cdn.sencha.com/cmd/7.2.0.84/no-jre/SenchaCmd-7.2.0.84-linux-amd64.sh.zip && \
+    unzip SenchaCmd-7.2.0.84-linux-amd64.sh.zip && \
+    ./SenchaCmd-7.2.0.84-linux-amd64.sh -q -dir /opt/Sencha/Cmd/7.2.0.84 -Dall=true
+RUN rm SenchaCmd-7.2.0.84-linux-amd64.sh && \
+    rm SenchaCmd-7.2.0.84-linux-amd64.sh.zip && \
+    chmod +x /opt/Sencha/Cmd/7.2.0.84/sencha
+RUN curl -sL https://deb.nodesource.com/setup_16.x  | bash - && \
+    apt-get -y install nodejs && \
+    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | tee /usr/share/keyrings/yarnkey.gpg >/dev/null && \
+    echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && apt-get install yarn -y && \
+    npm i -g pm2
+ENV PATH="/opt/Sencha/Cmd:$PATH"
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*

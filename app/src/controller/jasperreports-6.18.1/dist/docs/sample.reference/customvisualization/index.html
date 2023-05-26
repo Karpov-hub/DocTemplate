@@ -1,0 +1,806 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JasperReports 6.18.1 - Custom Visualization Components Sample</title>
+<style type="text/css">
+.title {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 28px;
+	font-weight: normal;
+}
+
+.toc {
+	font-family: Courier New, Courier, serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.name {
+	font-family: Courier New, Courier, serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.label {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.description {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.value {
+	font-family: Courier New, Courier, serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.element {
+	font-family: Courier New, Courier, serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.attribute {
+	font-family: Courier New, Courier, serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.code {
+	font-family: Courier New, Courier, serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.copy {
+	font-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-style: normal;
+	color: #000000;
+}
+
+.subtitle {
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: bold;
+	text-decoration: none;
+	color: inherit;
+}
+
+table.doctable {
+    border-collapse: collapse;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 10px 0;
+    text-align: left;
+}
+
+table.doctable th, table.doctable td {
+    border-bottom: 1px solid gray;
+    padding: 5px 10px;
+}
+
+table.doctable tr.full_border th, table.doctable tr.full_border td {
+    border: 1px solid gray;
+}
+
+table.doctable.alternate_bg tr:nth-child(even), tr.grey_bg {
+    background-color: #f2f2f2;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.large {
+    font-size: 20px;
+}
+
+.maxWidth170 {
+    max-width: 170px;
+}
+
+.minWidth300 {
+    min-width: 300px;
+}
+
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<a name="top"></a>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right" colspan="2"><span class="element"><a href="../../JasperReports-Ultimate-Guide-3.pdf">JasperReports Ultimate Guide</a> - <a href="../../sample.reference.html">Sample Reference</a> - <a href="../../schema.reference.html">Schema Reference</a> - <a href="../../config.reference.html">Configuration Reference</a> - <a href="../../api/index.html">API (Javadoc)</a></span>
+<br>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<hr size="1">
+</td>
+</tr>
+<tr valign="middle">
+<td nowrap="true"><span class="title">JasperReports - Custom Visualization Components Sample (version 6.18.1)</span></td><td align="right"><img border="0" src="../../resources/jasperreports.svg"></td>
+</tr>
+<tr>
+<td colspan="2">
+<hr size="1">
+</td>
+</tr>
+</table>
+<br>
+<span class="description"><span class="description">Shows how JavaScript based visualizations could be included in reports using the Custom Visualization Component.</span></span>
+<br>
+<br>
+<span class="element"><a href="http://sourceforge.net/projects/jasperreports/files/jasperreports/JasperReports%206.18.1/jasperreports-6.18.1-project.zip/download" target="_blank">Download All Sample Source Files</a></span>
+<br>
+<span class="element"><a href="http://sourceforge.net/p/jasperreports/code/ci/6.18.1/tree/jasperreports/demo/samples/customvisualization/" target="_blank">Browse Sample Source Files on Git</a></span>
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+<td style="width: 20px;">
+<br>
+</td><td>
+<br>
+</td>
+</tr>
+<tr>
+<td colspan="2"><span class="label">Main Features in This Sample</span></td>
+</tr>
+<tr>
+<td>
+<br>
+</td><td><span class="element"><a href="#customvisualization">Custom Visualization Components</a></span></td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td><img height="1" width="20" border="0" src="../../resources/px.gif"></td><td><img height="1" width="20" border="0" src="../../resources/px.gif"></td><td><img height="1" width="20" border="0" src="../../resources/px.gif"></td><td><img height="1" width="20" border="0" src="../../resources/px.gif"></td><td width="80%">
+<br>
+</td><td width="20%">
+<br>
+</td>
+</tr>
+<tr>
+<td align="right" colspan="6"><a name="customvisualization"></a><a class="toc" href="#top">top</a></td>
+</tr>
+<tr>
+<td colspan="6">
+<hr size="1">
+</td>
+</tr>
+<tr valign="top">
+<td><img border="0" src="../../resources/jr-16x16.png"></td><td colspan="4"><span class="name">Custom Visualization Components</span></td><td align="right"><span class="copy">Documented by 
+	<a href="mailto:gt78@users.sourceforge.net" class="copy">Giulio Toffoli</a></span></td>
+</tr>
+<tr>
+<td colspan="6">
+<br>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<br>
+</td><td nowrap="true"><span class="label">Description / Goal</span></td><td>
+<br>
+</td><td colspan="3"><span class="description">
+Shows how to render a custom visualization in a report, using the custom visualization component shipped with the JasperReports library.
+    </span></td>
+</tr>
+<tr valign="top">
+<td>
+<br>
+</td><td colspan="1"><span class="label">Since</span></td><td>
+<br>
+</td><td colspan="3"><span class="description">6.7.0</span></td>
+</tr>
+<tr>
+<td colspan="6">
+<br>
+</td>
+</tr>
+<tr>
+<td>
+<br>
+</td><td colspan="5"><span class="description">
+<b>Custom Visualization Component Overview</b>    
+
+<br>
+
+<br>
+The Custom Visualization Component allows to render an SVG image generated by using JavaScript code.<br>
+Its main goal is to leverage JavaScript visualization libraries (such as d3.js) in order
+to produce content to be rendered in the report.<br>
+This component does not produce any content itself, instead it acts as bridge between the JasperReports library
+and the JavaScript module provided by the user, which at the end is responsible to produce the visualization.<br>
+In case the report is exported to HTML, the JavaScript code is executed directly inside the final document. This allows
+to take full advantage of the browser functionalities.<br>
+When the report is exported to other file formats (such as PDF or MS Word), the component takes care of rendering
+the SVG image produced by the JavaScript code, behaving like a regular image element.<br>
+If the script does not produce SVG image, but more complex HTML, the visualization can be rendered as PNG image when exported
+to formats different from HTML.
+<br>
+
+<br>
+
+<a name="schema" href="../../sample.reference/customvisualization/index.html#schema" class="subtitle">Custom Visualization Component Schema</a>
+
+<br>
+
+<br>
+Below is the main part of the custom visualization component schema.
+As any other component element, the <span class="code"><code>evaluationTime</code></span> and <span class="code"><code>evaluationGroup</code></span> attributes are provided:
+
+<pre>&lt;element name="customvisualization" substitutionGroup="jr:component"&gt;
+&lt;complexType&gt;
+&lt;complexContent&gt;
+    &lt;extension base="jr:componentType"&gt;
+    &lt;sequence&gt;
+        &lt;element name="itemProperty" type="c:ItemProperty" minOccurs="0" maxOccurs="unbounded" /&gt;
+        &lt;element ref="cvc:cvData" minOccurs="0" maxOccurs="unbounded" /&gt;
+    &lt;/sequence&gt;
+    &lt;attribute name="evaluationTime" type="jr:basicEvaluationTime" use="optional" default="Now"/&gt;
+    &lt;attribute name="evaluationGroup" type="string" use="optional"/&gt;
+    &lt;attribute name="processingClass" type="string" use="optional"/&gt;
+    &lt;attribute name="onErrorType" use="optional" default="Error"&gt;
+        &lt;simpleType&gt;
+        &lt;restriction base="string"&gt;
+            &lt;enumeration value="Error"/&gt;
+            &lt;enumeration value="Blank"/&gt;
+            &lt;enumeration value="Icon"/&gt;
+        &lt;/restriction&gt;
+        &lt;/simpleType&gt;
+    &lt;/attribute&gt;
+    &lt;/extension&gt;
+&lt;/complexContent&gt;
+&lt;/complexType&gt;
+&lt;/element&gt;</pre>
+
+
+
+<a name="schema" href="../../sample.reference/customvisualization/index.html#schema" class="subtitle">Main Properties</a>
+
+<br>
+
+<br>
+Since the custom visualization component works like a wrapper, its definition is very generic and based on
+simple properties (<span class="code"><code>itemProperty</code></span>). There are four common properties that can be used with
+any custom visualization component:
+<ul>
+    
+<li>
+<span class="code"><code>script</code></span> - the location of the JavaScript file implementing the component</li>
+    
+<li>
+<span class="code"><code>module</code></span> - (optional) the name of the JavaScript module to be loaded by using RequireJs (if not specified,
+    the base name of the JavaScript file without extensions will be assumed as name of the module)</li>
+    
+<li>
+<span class="code"><code>css</code></span> - (optional) the location of a CSS file eventually used by the component</li>
+    
+<li>
+<span class="code"><code>renderAsPng</code></span> - (optional) a boolean value that can be used when the content produced is not an SVG image</li>
+
+</ul>
+
+All the configured properties will be passed to the JavaScript function in charge of rendering the visualization.<br>
+The value for the properties can be either a static value or a value defined by means of an expression.
+<br>
+
+<br>
+
+<a name="schema" href="../../sample.reference/customvisualization/index.html#schema" class="subtitle">Configuring Data Series</a>
+
+<br>
+
+<br>
+One or more series of data may be provided to the script implementing the visualization by means of <span class="code"><code>cvData</code></span>
+elements:<br>
+
+
+<pre>&lt;element name="cvData"&gt;
+  &lt;complexType&gt;
+    &lt;sequence&gt;
+      &lt;element ref="jr:dataset" minOccurs="0" maxOccurs="1"/&gt;
+      &lt;element ref="cvc:item" minOccurs="0" maxOccurs="unbounded"/&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+&lt;/element&gt;</pre>
+
+A <span class="code"><code>cvData</code></span> can collect its data either from a subdataset, or from a hardcoded list of <span class="code"><code>cvc:item</code></span>. 
+Each <span class="code"><code>cvc:item</code></span> is defined by a set of <span class="code"><code>ItemProperty</code></span> elements.<br>The name of each item property to
+be set for each <span class="code"><code>cvc:item</code></span> depends by the component we are working with.<br>
+
+<br>
+The Sparkline sample uses a subdataset to populate a simple series of values. In this case each <span class="code"><code>cvc:item</code></span>
+has a single <span class="code"><code>ItemProperty</code></span> called <i>value</i>.<br>
+
+
+<br>
+
+<br>
+
+<a name="customvisualization_components" href="../../sample.reference/customvisualization/index.html#customvisualization_components" class="subtitle">Custom Visualization Component Samples</a>
+
+<br>
+
+<br>
+This sample contains the implementation of 6 custom visualizations:
+<ul>
+
+<li>
+<b>Simple Rectangle</b> - A very simple visualization to explain the basics of creating your own Custom Visualization Component.<br>
+<br>
+</li>
+
+<li>
+<b>D3 Rectanle</b> - An improved version of Simple Rectangle which use d3.js. The component accepts a configuration parameter and
+displays vertical lines based on provided data.<br>
+<br>
+</li>
+
+<li>
+<b>Figures</b> - A d3.js based visualization to represent a quantity by using figures.<br>
+    
+<span class="element"><img src="figures.png" border="0"></span>
+<br>
+<br>
+
+</li>
+
+<li>
+<b>Radial Progress</b> - A d3.js based visualization to display a percentage value with a circle<br>
+    
+<span class="element"><img src="radialprogress.png" border="0"></span>
+<br>
+<br>
+
+</li>
+
+<li>
+<b>Sparkline</b> - A d3.js based minimalist line chart which displays data coming from a sub-dataset<br>
+    
+<span class="element"><img src="sparkline.png" border="0"></span>
+<br>
+<br>
+
+</li>
+
+<li>
+<b>LeafLet Markers</b> - A map with markers implemented by using the LeafLet.js mapping library<br>
+    
+<span class="element"><img src="leafletmarkers.png" border="0"></span>
+<br>
+<br>
+
+</li>
+
+</ul>
+
+The source code of the custom visualizations can be found in the
+<span class="code"><code>demo/samples/customvisualization/components</code></span> folder.<br>
+Each custom visualization is composed by one or more JavaScript files that are combined and optimized by using RequireJs.<br>
+This optimization process creates a single minified JavaScript file which represents the custom visualization component
+referenced inside the report template by means of the <span class="code"><code>script</code></span> property described above.<br>
+<br>
+To generate the components from the sources, in a command prompt/terminal window set the current folder to <span class="code"><code>demo/samples/customvisualization</code></span>
+within the JasperReports source project and run the <span class="code"><code>&gt; ant components</code></span> command.<br>
+The generated components will be saved in <span class="code"><code>demo/samples/customvisualization/build/components</code></span>, each in its own directory.
+
+<br>
+
+<br>
+
+<a name="customvisualization_sample" href="../../sample.reference/customvisualization/index.html#customvisualization_sample" class="subtitle">Creating Your Own Custom Visualization Component</a>
+
+<br>
+
+<br>
+To implement a new Custom Visualization Component we need to define a JavaScript module that returns an anonymous function implementing the component logic.<br>
+This module will be then optimized and combined with the JavaScript libraries used by the component (if any) with the RequireJs optimizer (r.js).<br>
+The build process is configured in a file called <span class="code"><code>build.js</code></span> in which dependencies, module name and other information are specified.<br>
+Before starting, it is important to keep in mind that Custom Visualization Components are not able to stretch, which means that the
+allocated space in the report for the component is defined at design time and will not change based on what is rendered. This is the same behavior
+of other elements such charts and images.<br>
+It is also important to notice that producing an SVG image provides much better results over complex HTML content, which would need to
+be rendered as a PNG image.<br>
+
+<br>
+Let's create a simple component named <i>simplerectangle</i> which displays a simple SVG rectangle.<br>
+We start by creating a file called <i>simplerectangle.js</i>. The content of this file would be something like:<br>
+
+<pre>
+define('simplerectangle', [], function () {
+
+  return function (instanceData) {
+
+    var w = instanceData.width,   // The width of the element
+        h = instanceData.height;  // The height of the element
+
+    var container = window.document.getElementById(instanceData.id);
+
+    // Create the SVG Document
+    var svgDocument = window.document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgDocument.setAttributeNS(null, "width", w);
+    svgDocument.setAttributeNS(null, "height", h);
+
+    // Create the SVG Rectangle
+    var rectangle = window.document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rectangle.setAttributeNS(null, "x", 0);
+    rectangle.setAttributeNS(null, "y", 0);
+    rectangle.setAttributeNS(null, "width",  w);
+    rectangle.setAttributeNS(null, "height",  h);
+    rectangle.setAttributeNS(null, "fill", "red");
+
+    // Add the rectangle to the SVG
+    svgDocument.appendChild( rectangle );
+    
+    // Add the SVG to the container
+    container.appendChild( svgDocument );
+  };
+});
+</pre>
+The <span class="code"><code>instanceData</code></span> object passed to our function holds all the properties and data series defined in the component configuration.<br>
+The simplest instanceData object would look like:<br>
+
+<pre>
+{  
+   "module":"simplerectangle",
+   "id":"element1412794598",
+   "width":802,
+   "height":475,
+   "isInteractiveViewer":"false",
+   "script_uri":"simplerectangle/simplerectangle.min.js",
+   "series":[]
+}
+</pre>
+
+
+<br>
+In order to generate the RequireJS module, we create a <span class="code"><code>build.js</code></span> file as follow:
+<pre>
+({
+  optimize: 'none',
+  baseUrl: '',
+  paths: {
+    'simplerectangle': 'simplerectangle' 		
+  }, 
+  
+  wrap: {
+    start: "(function(root){\n\nvar define = root.define;\n\n",
+    end: "\n\n}(typeof __visualize__ != 'undefined' ? __visualize__ : (typeof __jrio__ != 'undefined' ? __jrio__ : window)));"
+  },
+
+  name: "simplerectangle",
+  out: "simplerectangle.min.js"
+})
+</pre>
+We list the files to combine in <span class="code"><code>paths</code></span>, in the form of<br>
+
+<span class="code"><code>module: 'path_to_file'</code></span>
+In this example we have only one file called <span class="code"><code>basic.js</code></span>, the extension .js is omitted.<br>
+The <span class="code"><code>wrap</code></span> option is used to be sure that this component will work properly in evnironments like TIBCO JR.io and TIBCO Jaspersoft Server interactive viewers.<br>
+
+<br>
+To generate the final component we can use different tools (i.e. Java or Node).<br>
+To compile the file using Node, be sure node is installed, then in a command prompt/terminal window set the current folder to the folder in which you created your component (i.e.  <span class="code"><code>demo/samples/customvisualization/components/basic</code></span> within the JasperReports source project) then run the command:<br>
+
+<br>
+
+<span class="code"><code>&gt; node ../../libraries/requirejs/r-2.3.5.js -o build.js</code></span>
+<br>
+
+<br>
+To compile the file using Java, the Rhino JavaScript engine is used. Here is the command to run:<br>
+
+<br>
+
+<span class="code"><code>&gt; java -cp /path/to/rhino.jar org.mozilla.javascript.tools.shell.Main -opt -1 ../../libraries/requirejs/r-2.3.5.js -o build.js</code></span>
+<br>
+
+<br>
+The full reference of the <span class="code"><code>build.js</code></span> file is available at <a href="https://github.com/requirejs/r.js/blob/master/build/build.js" target="_blank" class="element">https://github.com/requirejs/r.js/blob/master/build/build.js</a>
+<br>
+
+<br>
+We will use this newly create component in a JRXML with the following code:<br>
+
+<pre>&lt;componentElement&gt;
+  &lt;reportElement x="0" y="80" width="802" height="475" uuid="ba29f458-9e56-4017-b65d-8de18ac7470e" /&gt;
+  &lt;cvc:customvisualization
+        xmlns:cvc="http://www.jaspersoft.com/cvcomponent"
+        xsi:schemaLocation="http://www.jaspersoft.com/cvcomponent http://www.jaspersoft.com/cvcomponent/component.xsd"
+        evaluationTime="Report"&gt;
+    &lt;cvc:itemProperty name="module" value="simplerectangle"/&gt;
+    &lt;cvc:itemProperty name="script" value="simplerectangle/simplerectangle.min.js"/&gt;
+  &lt;/cvc:customvisualization&gt;
+&lt;/componentElement&gt;</pre>
+
+<br>
+
+<br>
+Our component creates a rectangle by using pure JavaScript and currently it does not use any data coming from the report.<br>
+Let's improve it and start rendering real data. We will create a new component named <span class="code"><code>d3rectangle</code></span> and use a
+JavaScript library to simplify the way we generate our SVG code.<br>
+D3.js is an extremely powerful library to display data by generating SVG. We start by declaring a dependency to d3.js in our
+<span class="code"><code>build.js</code></span> file as follow:<br>
+
+<pre>
+({
+  optimize: 'none',
+  baseUrl: '',
+  paths: {
+    'd3': 'd3': '../../libraries/d3/d3-5.5.0.min',
+    'd3rectangle': 'd3rectangle' 		
+  }, 
+  
+  wrap: {
+    start: "(function(root){\n\nvar define = root.define;\n\n",
+    end: "\n\n}(typeof __visualize__ != 'undefined' ? __visualize__ : (typeof __jrio__ != 'undefined' ? __jrio__ : window)));"
+  },
+
+  name: "d3rectangle",
+  out: "d3rectangle.min.js"
+})
+</pre>
+The D3 function needs to be specified in our module definition in the following way:<br>
+
+<pre>
+define('d3rectangle', ['d3'], function (d3) {
+
+  return function (instanceData) {
+            ...
+</pre>
+At this point the d3 library is at our disposal. We will display a set of vertical lines inside our rectangle. To do that, we will
+need to provide some data to the component by means of series. We expect our series to have two fields:
+<ul>
+    
+<li>
+<span class="code"><code>value</code></span> - which will be used to determine the horizontal position of our line</li>
+    
+<li>
+<span class="code"><code>color</code></span> - a string defining the color used to plot the line</li>
+
+</ul>
+We will also provide a property to set the background color for our rectangle, which we will call <span class="code"><code>background</code></span>.<br>
+Here is the code of our d3 based visualization:<br>
+
+<pre>
+define('d3rectangle', ['d3'], function (d3) {
+
+  return function (instanceData) {
+
+    var w = instanceData.width,   // The width of the element
+        h = instanceData.height;  // The height of the element
+        bgColor = instanceData.background; 
+
+    // If no property called background has been provided, let's use a default gray background color.
+    if (typeof bgColor === 'undefined') {
+      bgColor = '#efefef';
+    }
+
+    // Add the SVG to the dom...
+    var svg = d3.select('#' + instanceData.id).append('svg')
+                  .attr('width', w)
+                  .attr('height', h);
+
+    // Add the rectangle...
+    var rectangle = svg.append('rect')
+                  .attr('x', 0)
+                  .attr('y', 0)
+                  .attr('width', w)
+                  .attr('height', h)
+                  .attr('fill', bgColor);
+
+    // Define a scale to map the width of the component with the values range
+    var hscale = d3.scaleLinear()
+            .range([10, instanceData.width-10]) // we leave 10px padding on left and right
+            .domain([
+                d3.min(instanceData.series[0], function(d) { return +d.value; }),
+                d3.max(instanceData.series[0], function(d) { return +d.value; })
+              ]);
+
+    // Add the lines
+    svg.append("g").selectAll("line")
+        .data(instanceData.series[0])
+        .enter()
+        .append('line')
+        .attr('x1', function(d) {  return hscale(+d.value); } )
+        .attr('y1', 0)
+        .attr('x2', function(d) {  return hscale(+d.value); } )
+        .attr('y2', h)
+        .attr('stroke', function(d) { return d.color; })
+        .attr('stroke-width', 3);             
+
+  };
+});
+</pre>
+In order to use our new component, we will have to set the <span class="code"><code>background</code></span> property and define a sub-dataset to provide the values for the lines:<br>
+
+<pre>&lt;componentElement&gt;
+  &lt;reportElement x="0" y="80" width="802" height="475" uuid="ba29f458-9e56-4017-b65d-8de18ac7470e" /&gt;
+  &lt;cvc:customvisualization 
+            xmlns:cvc="http://www.jaspersoft.com/cvcomponent"
+            xsi:schemaLocation="http://www.jaspersoft.com/cvcomponent http://www.jaspersoft.com/cvcomponent/component.xsd"
+            evaluationTime="Report"&gt;
+    &lt;cvc:itemProperty name="module" value="d3rectangle"/&gt;
+    &lt;cvc:itemProperty name="script" value="d3rectangle/d3rectangle.min.js"/&gt;
+    &lt;cvc:itemProperty name="background" value="#eeeeee"/&gt;
+    &lt;cvc:cvData&gt;
+      &lt;dataset&gt;
+        &lt;datasetRun subDataset="Sample Dataset" uuid="0e1d87a7-9376-4927-9b1e-30835421a98a"&gt;
+          &lt;dataSourceExpression&gt;new net.sf.jasperreports.engine.data.JsonDataSource( 
+                new StringBufferInputStream( 
+                    "[{ value: 20, color: 'red'}," +
+                     "{ value: 35, color: 'green'}," +
+                     "{ value: 78, color: 'blue'}," +
+                     "{ value: 92, color: 'yellow'}]") )
+           &lt;/dataSourceExpression&gt;
+        &lt;/datasetRun&gt;
+      &lt;/dataset&gt;
+      &lt;cvc:item&gt;
+        &lt;cvc:itemProperty name="value" value="0"&gt;
+          &lt;valueExpression&gt;$F{value}&lt;/valueExpression&gt;
+        &lt;/cvc:itemProperty&gt;
+        &lt;cvc:itemProperty name="color" value="0"&gt;
+          &lt;valueExpression&gt;$F{color}&lt;/valueExpression&gt;
+        &lt;/cvc:itemProperty&gt;
+      &lt;/cvc:item&gt;
+    &lt;/cvc:cvData&gt;
+  &lt;/cvc:customvisualization&gt;
+&lt;/componentElement&gt;
+</pre>
+
+
+
+<br>
+
+<br>
+
+<a name="customvisualization_sample" href="../../sample.reference/customvisualization/index.html#customvisualization_sample" class="subtitle">Custom Visualization JRXML Samples</a>
+
+<br>
+
+<br>
+This sample contains 6 JRXML files, one for each custom visualization component
+
+<ol start="1">
+
+<li>
+<a name="simplerectangle_report" href="../../sample.reference/customvisualization/index.html#simplerectangle_report" class="subtitle">Simple Rectangle</a>
+
+<br>
+
+<br>
+This report template contains the Simple Rectangle component described in the section above, which creates a simple rectangle
+without displaying any specific data.
+</li>
+
+</ol>
+
+
+<ol start="2">
+
+<li>
+<a name="d3rectangle_report" href="../../sample.reference/customvisualization/index.html#d3rectangle_report" class="subtitle">D3 Rectangle</a>
+
+<br>
+
+<br>
+This report template contains the D3 Rectangle component described in the section above, which creates a rectangle
+with a configurable background color and a set of lines provided by means on a sub-dataset.
+</li>
+
+</ol>
+
+
+<ol start="3">
+
+<li>
+<a name="figures_report" href="../../sample.reference/customvisualization/index.html#figures_report" class="subtitle">Figures</a>
+
+<br>
+
+<br>
+This report template shows how to use the Figures component with different configuration options.<br>
+The report does not use any data; for each component a static value is set for the property "itemsValue".
+</li>
+
+</ol>
+
+
+<ol start="4">
+
+<li>
+<a name="radial_progress_report" href="../../sample.reference/customvisualization/index.html#radial_progress_report" class="subtitle">Radial Progress</a>
+
+<br>
+
+<br>
+This report template shows how to use the Radial Progress component with different configuration options.<br>
+The report does not use any data; for each component a static value is set for the property "value".
+</li>
+
+</ol>
+
+<ol start="5">
+
+<li>
+<a name="sparkline_report" href="../../sample.reference/customvisualization/index.html#sparkline_report" class="subtitle">Sparkline</a>
+
+<br>
+
+<br>
+This report template shows how to use the Sparkline component with different configuration options.<br>
+The report does not use any data; for each component a sub-dataset is feed with static JSON data by using an expression.
+</li>
+
+</ol>
+
+<ol start="6">
+
+<li>
+<a name="shipments_report" href="../../sample.reference/customvisualization/index.html#shipments_report" class="subtitle">LeafLet Markers</a>
+
+<br>
+
+<br>
+This report template shows how to use the LeafLet Markers component. Marker locations are read by a JSON file provided with the sample.<br>
+Differently from the other samples, this one uses the property <span class="code"><code>saveAsPng</code></span> since the JavaScript code does not produce
+an SVG, but a more complex HTML visualization.
+<br>
+
+</li>
+
+</ol>
+
+
+<br>
+
+<br>
+
+<b>Running the Sample</b>
+
+<br>
+
+<br>
+Running the sample requires the <a href="http://ant.apache.org/" target="_blank" class="element">Apache Ant</a> library. Make sure that <span class="code"><code>ant</code></span> is already installed on your system (version 1.5 or later).
+<br>
+In a command prompt/terminal window set the current folder to <span class="code"><code>demo/samples/customvisualization</code></span> within the JasperReports source project and run the <span class="code"><code>&gt; ant test view</code></span> command.
+<br>
+It will generate all supported document types containing the sample report in the <span class="code"><code>demo/samples/customvisualization/build/reports</code></span> directory. 
+<br>
+Then the report will open in the JasperReports internal viewer.
+    </span></td>
+</tr>
+<tr>
+<td colspan="6">
+<br>
+</td>
+</tr>
+</table>
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td>
+<hr size="1">
+</td>
+</tr>
+<tr>
+<td align="center"><span class="copy">&copy; 2001-<script language="javascript">document.write((new Date()).getFullYear())</script> TIBCO Software Inc. <a class="copy" target="_blank" href="http://www.jaspersoft.com">www.jaspersoft.com</a></span></td>
+</tr>
+</table>
+</body>
+</html>

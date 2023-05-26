@@ -1,0 +1,87 @@
+stages:
+  - tests
+  - deploy
+
+tests:
+  stage: tests
+  image: dm112/doctemplate-ci-base:0.0.1
+  services:
+    - name: postgres:12.12
+      alias: postgres
+    - name: minio/minio
+      alias: minio
+      command: ["server", "/data"]
+    - name: redis:latest
+      alias: redis
+  variables:
+    POSTGRES_DB: doctemplate
+    POSTGRES_USER: docker
+    POSTGRES_PASSWORD: docker
+    POSTGRES_HOST_AUTH_METHOD: trust
+    NODE_ENV: docker
+  script:
+    - echo -e "\e[0Ksection_start:`date +%s`:install[collapsed=true]\r\e[0KInstallation..."
+    - yarn install --frozen-lockfile
+    - yarn global add forever
+    - npx lerna bootstrap
+    - echo -e "\e[0Ksection_end:`date +%s`:install\r\e[0K"
+
+    - echo -e "\e[0Ksection_start:`date +%s`:build[collapsed=true]\r\e[0KBuilding..."
+    - yarn build
+    - echo -e "\e[0Ksection_end:`date +%s`:build\r\e[0K"
+
+    - echo -e "\e[0Ksection_start:`date +%s`:migrate[collapsed=true]\r\e[0KDB migration..."
+    - yarn migrate
+    - yarn seed
+    - echo -e "\e[0Ksection_end:`date +%s`:migrate\r\e[0K"
+
+    - echo -e "\e[0Ksection_start:`date +%s`:test\r\e[0KStarting tests..."
+    - yarn citest
+    - echo -e "\e[0Ksection_end:`date +%s`:test\r\e[0K"
+  artifacts:
+    expire_in: "1 h"
+    paths:
+      - "app/swagger/swagger-output.json"
+  only:
+    - staging
+
+deploy:
+  stage: deploy
+  image: kolbaskin/cmdnode
+  dependencies:
+    - "tests"
+  before_script:
+    - apt-get install rsync openssh-client
+    - mkdir -p ~/.ssh
+    - echo "$SSH_KEY" >> ~/.ssh/id_dsa
+    - chmod 600 ~/.ssh/id_dsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - chmod 755 ./ci_project_build.sh
+  script:
+    - ./ci_project_build.sh
+    - rsync -ramz --stats --delete ./build/* $SSH_HOST:/home/ec2-user/doctemplate
+    - rsync -ramz --stats --delete ./app/swagger/swagger-output.json $SSH_HOST:/home/ec2-user/doctemplate/app/swagger
+    - ssh $SSH_HOST '
+      export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.342.b07-1.amzn2.0.1.x86_64 &&
+      export PATH=$JAVA_HOME/lib:$PATH &&
+      (forever stop doctemplate || true) &&
+      (rm /home/ec2-user/.forever/doctemplate.log || true) &&
+      nvm use 16 &&
+      cd doctemplate/ &&
+      export NODE_ENV=staging &&
+      yarn cache clean &&
+      yarn &&
+      npx lerna bootstrap &&
+      npx lerna run build --ignore admin &&
+      cd packages/db/ &&
+      export DB_CREDS='$DB_CREDS' &&
+      export RECAPTCHAV3_SECRET='$RECAPTCHAV3_SECRET' &&
+      npx sequelize-cli db:migrate &&
+      npx sequelize-cli db:seed:all &&
+      cd ../.. ;
+      mkdir -p tmp &&
+      yarn start &&
+      yarn swagger &&
+      exit'
+  only:
+    - staging

@@ -1,0 +1,28 @@
+{
+  "apps": [
+    {
+      "name": "jasper-report-generator",
+      "cwd": "./app",
+      "kill_timeout": 3000,
+      "restart_delay": 3000,
+      "script": "yarn",
+      "args": "run watch"
+    },
+    {
+      "name": "admin",
+      "cwd": "./admin",
+      "kill_timeout": 3000,
+      "restart_delay": 3000,
+      "script": "yarn",
+      "args": "run watch"
+    },
+    {
+      "name": "@app/fileprovider",
+      "cwd": "./packages/fileprovider",
+      "kill_timeout": 3000,
+      "restart_delay": 3000,
+      "script": "yarn",
+      "args": "run watch"
+    }
+  ]
+}

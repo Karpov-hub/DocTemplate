@@ -1,0 +1,18 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "sourceMaps": "inline",
+  "retainLines": true,
+  "plugins": [
+    "transform-optional-chaining",
+    "@babel/plugin-syntax-class-properties"
+  ]
+}

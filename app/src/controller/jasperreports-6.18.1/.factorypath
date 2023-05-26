@@ -1,0 +1,7 @@
+<factorypath>
+    <factorypathentry kind="VARJAR" id="M2_REPO/net/sf/jasperreports/jasperreports-annotation-processors/6.18.1/jasperreports-annotation-processors-6.18.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/net/sf/jasperreports/jasperreports-metadata/6.18.1/jasperreports-metadata-6.18.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.12.2/jackson-core-2.12.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-databind/2.12.2/jackson-databind-2.12.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-annotations/2.12.2/jackson-annotations-2.12.2.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>

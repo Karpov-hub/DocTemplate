@@ -1,0 +1,16 @@
+{
+  "name": "admin",
+  "version": "1.0.0",
+  "description": "This folder is primarily a container for the top-level pieces of the application. While you can remove some files and folders that this application does not use, be sure to read below before deciding what can be deleted and what needs to be kept in source control.",
+  "main": "app.js",
+  "scripts": {
+    "watch": "sencha app watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

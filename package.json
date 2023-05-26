@@ -1,0 +1,31 @@
+{
+  "name": "jasper-report",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "lerna run start --parallel",
+    "watch": "lerna run watch --parallel",
+    "build": "lerna run build --parallel",
+    "test": "export NODE_ENV=localtest && lerna run mock && lerna run test --scope jasper-report-generator && lerna run stopmock",
+    "citest": "export NODE_ENV=docker && lerna run mock && lerna run citest --scope jasper-report-generator && lerna run stopmock",
+    "swagger": "lerna run swagger --parallel",
+    "migrate": "lerna run migrate",
+    "seed": "lerna run seed",
+    "docker-build-base": "docker build --no-cache -t dm112/doctemplate-ci-base:latest -f Dockerfile.base . && docker push dm112/doctemplate-ci-base:0.0.1",
+    "docker-build": "clear && docker build --no-cache -t doctemplate ."
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "bots/*",
+    "app/",
+    "admin/"
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "engines": {
+    "node": ">=16.x"
+  }
+}

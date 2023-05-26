@@ -1,0 +1,29 @@
+{
+  "name": "mock-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "watch": "babel-watch --watch src src/index.js",
+    "build": "babel src --out-dir ./dist --source-maps",
+    "mock": "(forever stop 'doctemplatemock' || true) && forever --minUptime 5000 --uid 'doctemplatemock' -a start dist/index.js",
+    "stopmock": "(forever stop 'doctemplatemock' || true)"
+  },
+  "engines": {
+    "node": ">=16.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.18.9",
+    "babel-plugin-transform-optional-chaining": "^7.0.0-beta.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^7.7.2"
+  }
+}

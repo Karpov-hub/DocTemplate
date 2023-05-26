@@ -1,0 +1,530 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JasperReports 6.18.1 - PDF Forms Sample</title>
+<style type="text/css">
+.title {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 28px;
+	font-weight: normal;
+}
+
+.toc {
+	font-family: Courier New, Courier, serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.name {
+	font-family: Courier New, Courier, serif;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.label {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.description {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.value {
+	font-family: Courier New, Courier, serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.element {
+	font-family: Courier New, Courier, serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.attribute {
+	font-family: Courier New, Courier, serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.code {
+	font-family: Courier New, Courier, serif;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.copy {
+	font-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-style: normal;
+	color: #000000;
+}
+
+.subtitle {
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: bold;
+	text-decoration: none;
+	color: inherit;
+}
+
+table.doctable {
+    border-collapse: collapse;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 10px 0;
+    text-align: left;
+}
+
+table.doctable th, table.doctable td {
+    border-bottom: 1px solid gray;
+    padding: 5px 10px;
+}
+
+table.doctable tr.full_border th, table.doctable tr.full_border td {
+    border: 1px solid gray;
+}
+
+table.doctable.alternate_bg tr:nth-child(even), tr.grey_bg {
+    background-color: #f2f2f2;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.large {
+    font-size: 20px;
+}
+
+.maxWidth170 {
+    max-width: 170px;
+}
+
+.minWidth300 {
+    min-width: 300px;
+}
+
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<a name="top"></a>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="right" colspan="2"><span class="element"><a href="../../JasperReports-Ultimate-Guide-3.pdf">JasperReports Ultimate Guide</a> - <a href="../../sample.reference.html">Sample Reference</a> - <a href="../../schema.reference.html">Schema Reference</a> - <a href="../../config.reference.html">Configuration Reference</a> - <a href="../../api/index.html">API (Javadoc)</a></span>
+<br>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<hr size="1">
+</td>
+</tr>
+<tr valign="middle">
+<td nowrap="true"><span class="title">JasperReports - PDF Forms Sample (version 6.18.1)</span></td><td align="right"><img border="0" src="../../resources/jasperreports.svg"></td>
+</tr>
+<tr>
+<td colspan="2">
+<hr size="1">
+</td>
+</tr>
+</table>
+<br>
+<span class="description"><span class="description">Shows how to generate editable PDF content using JasperReports.</span></span>
+<br>
+<br>
+<span class="element"><a href="http://sourceforge.net/projects/jasperreports/files/jasperreports/JasperReports%206.18.1/jasperreports-6.18.1-project.zip/download" target="_blank">Download All Sample Source Files</a></span>
+<br>
+<span class="element"><a href="http://sourceforge.net/p/jasperreports/code/ci/6.18.1/tree/jasperreports/demo/samples/forms/" target="_blank">Browse Sample Source Files on Git</a></span>
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+<td style="width: 20px;">
+<br>
+</td><td>
+<br>
+</td>
+</tr>
+<tr>
+<td colspan="2"><span class="label">Main Features in This Sample</span></td>
+</tr>
+<tr>
+<td>
+<br>
+</td><td><span class="element"><a href="#pdfforms">Generating Editable PDF Content</a></span></td>
+</tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td><img height="1" width="20" border="0" src="../../resources/px.gif"></td><td><img height="1" width="20" border="0" src="../../resources/px.gif"></td><td><img height="1" width="20" border="0" src="../../resources/px.gif"></td><td><img height="1" width="20" border="0" src="../../resources/px.gif"></td><td width="80%">
+<br>
+</td><td width="20%">
+<br>
+</td>
+</tr>
+<tr>
+<td align="right" colspan="6"><a name="pdfforms"></a><a class="toc" href="#top">top</a></td>
+</tr>
+<tr>
+<td colspan="6">
+<hr size="1">
+</td>
+</tr>
+<tr valign="top">
+<td><img border="0" src="../../resources/jr-16x16.png"></td><td colspan="4"><span class="name">Generating Editable PDF Content</span></td><td align="right"><span class="copy">Documented by 
+	<a href="mailto:shertage@users.sourceforge.net" class="copy">Sanda Zaharia</a></span></td>
+</tr>
+<tr>
+<td colspan="6">
+<br>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<br>
+</td><td nowrap="true"><span class="label">Description / Goal</span></td><td>
+<br>
+</td><td colspan="3"><span class="description">
+Shows how specific PDF export properties can be used in order to generate editable PDF content.
+    </span></td>
+</tr>
+<tr valign="top">
+<td>
+<br>
+</td><td colspan="1"><span class="label">Since</span></td><td>
+<br>
+</td><td colspan="3"><span class="description">6.12.0</span></td>
+</tr>
+<tr>
+<td colspan="6">
+<br>
+</td>
+</tr>
+<tr>
+<td>
+<br>
+</td><td colspan="5"><span class="description">
+<a name="overview" href="../../sample.reference/forms/index.html#overview" class="subtitle">PDF Forms and Input Fields</a>
+
+<br>
+
+<br>
+The content of a PDF document can be edited inside a PDF form that contains various input fields such as textboxes, lists, 
+comboboxes, checkboxes, radio groups, etc. Using the JasperReports library, one can generate these input fields by setting specific 
+custom properties in the report. In the following sections we will see how these properties can be set and how they work in conjunction to 
+generate editable content in PDF documents.
+<br>
+
+<br>
+
+<a name="input_field_type" href="../../sample.reference/forms/index.html#input_field_type" class="subtitle">Input Field Types</a>
+
+<br>
+
+<br>
+In order to determine the appropriate content and layout of an input field we need to know its type first. The JasperReports library 
+offers support for the following types:
+<ul>
+
+<li>Textbox</li>
+
+<li>List</li>
+
+<li>Combobox</li>
+
+<li>Checkbox</li>
+
+<li>Radio groups</li>
+
+</ul>
+The field type can be specified in the <a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.type" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.type</a> property, 
+that accepts the following values:
+<ul>
+
+<li>
+<span class="code"><code>Text</code></span> - specifies a textbox; this type of input field can be applied only to text elements (static text and textfield) in JasperReports</li>
+
+<li>
+<span class="code"><code>Combo</code></span> - specifies a combobox</li>
+
+<li>
+<span class="code"><code>List</code></span> - specifies a list</li>
+
+<li>
+<span class="code"><code>Check</code></span> - specifies a checkbox</li>
+
+<li>
+<span class="code"><code>Radio</code></span> - specifies a radio group</li>
+
+</ul>
+Each input field needs a unique identifier within the PDF form. This can be set using the 
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.name" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.name</a> element property. 
+In case this is not set, the field name is generated using the report element UUID.
+<br>
+
+<br>
+The background color, forecolor and text formatting inside a generated input field are inherited from the JasperReports element. For the border style we 
+need to set the following property, with values compatible with PDF border styles: 
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.border.style" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.border.style</a>.<br>
+Possible values are:
+<ul>
+
+<li>
+<span class="code"><code>Solid</code></span> - solid border</li>
+
+<li>
+<span class="code"><code>Dashed</code></span> - dashed border</li>
+
+<li>
+<span class="code"><code>Beveled</code></span> - beveled border</li>
+
+<li>
+<span class="code"><code>Inset</code></span> - inset border</li>
+
+<li>
+<span class="code"><code>Underline</code></span> - underline border</li>
+
+</ul>
+When this property is not set, the border is inherited from the element's pen style: if the pen style is 
+'<span class="code"><code>Dashed</code></span>', this style will be applied, otherwise the pen '<span class="code"><code>Solid</code></span>' style will be considered by default.<br>
+The border thickness is rounded and recalculated to have one of the following values compatible with PDF: [1,2,3].
+In case we need some input field content to be read-only, we can set the <a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.read.only" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.read.only</a> 
+flag for that element.
+<br>
+
+<br>
+
+<b>Example:</b>
+
+<pre>
+&lt;reportElement positionType="Float" mode="Opaque" x="0" y="0" width="25" height="25"&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.type" value="Check"/&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.border.style" value="Beveled"/&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.read.only" value="true"/&gt;
+&lt;/reportElement&gt;</pre>
+
+<a name="textbox" href="../../sample.reference/forms/index.html#textbox" class="subtitle">Text Input Fields</a>
+
+<br>
+
+<br>
+Textboxes are text input fields. They can be either single line or multi line textboxes. To specify which kind of textbox is considered, we can set the following flag property per report element: 
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.text.multiline" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.text.multiline</a>. 
+The initial text content of the input field is provided by the <a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.value" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.value</a> custom property
+and in case that one is missing, then the actual text content of the JasperReports text element is used instead.
+<br>
+
+<br>
+
+<b>Example:</b>
+
+<pre>
+&lt;reportElement positionType="Float" mode="Opaque" x="250" y="0" width="200" height="45" forecolor="#FFFF00" backcolor="#0000FF"&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.type" value="Text"/&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.text.multiline" value="true"/&gt;
+  &lt;property name="net.sf.jasperreports.print.keep.full.text" value="true"/&gt;
+  &lt;propertyExpression name="net.sf.jasperreports.export.pdf.field.value"&gt;"This\nis a multi\nline text inside a single line text field."&lt;/propertyExpression&gt;
+&lt;/reportElement&gt;</pre>
+
+<a name="textbox" href="../../sample.reference/forms/index.html#textbox" class="subtitle">List and Combobox Input Fields</a>
+
+<br>
+
+<br>
+List and combobox input fields can be populated by setting the following property:
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.choices" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.choices</a>. 
+Its value contains list items separated by a special character or set of characters provided by the 
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.choice.separators" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.choice.separators</a> property. 
+If not set, the default separator is '|'.
+<br>
+
+<br>
+
+<b>Example:</b>
+
+<pre>
+&lt;reportElement positionType="Float" mode="Opaque" x="0" y="0" width="200" height="95" forecolor="#00FFFF" backcolor="#00FF00"&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.type" value="List"/&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.choice.separators" value=","/&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.choices" value="Un,Deux,Trois,Quatre,Cinq"/&gt;
+&lt;/reportElement&gt;</pre>
+In case we need the textbox in the combobox field to be editable, we can set the 
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.combo.edit" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.combo.edit</a> property per 
+combobox element, while the a preselected value can be set using the 
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.value" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.value</a> property:
+<pre>
+&lt;reportElement positionType="Float" mode="Opaque" x="250" y="0" width="200" height="25" forecolor="#0000FF" backcolor="#FFFF00"&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.type" value="Combo"/&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.choices" value="One|Two|Three|Four|Five"/&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.value" value="Four"/&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.combo.edit" value="true"/&gt;
+&lt;/reportElement&gt;</pre>
+
+<a name="checkboxes" href="../../sample.reference/forms/index.html#checkboxes" class="subtitle">Checkbox Input Field</a>
+
+<br>
+
+<br>
+In order to properly set a checkbox we need to know how it's decorated and whether it's checked or no. We can set the checkbox appearance by using the 
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.check.type" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.check.type</a> property 
+with the following possible values:
+<ul>
+
+<li>
+<span class="code"><code>Check</code></span> - specifies a checkbox type decoration</li>
+
+<li>
+<span class="code"><code>Circle</code></span> - specifies a circle tipe decoration</li>
+
+<li>
+<span class="code"><code>Cross</code></span> - specifies a cross type decoration</li>
+
+<li>
+<span class="code"><code>Diamond</code></span> - specifies a diamond type decoration</li>
+
+<li>
+<span class="code"><code>Square</code></span> - specifies a square type decoration</li>
+
+<li>
+<span class="code"><code>Star</code></span> - specifies a star type decoration</li>
+
+</ul>
+To indicate if the checkbox is checked when the PDF document is open, we can use the 
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.checked" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.checked</a> property, 
+as in the following example:
+<pre>
+&lt;reportElement positionType="Float" mode="Opaque" x="0" y="0" width="25" height="25"&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.type" value="Check"/&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.check.type" value="Square"/&gt;
+  &lt;property name="net.sf.jasperreports.export.pdf.field.checked" value="true"/&gt;
+&lt;/reportElement&gt;</pre>
+
+<a name="radiogroups" href="../../sample.reference/forms/index.html#radiogroups" class="subtitle">Radio Groups</a>
+
+<br>
+
+<br>
+Radio groups are radio option input fields grouped together so that only a single option can be selected at a time. To group together 
+several radio options we can use the <a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.name" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.name</a> property. 
+By assigning the same name for multiple JasperReports elements, they will be automatically grouped as radio options. To decorate these radio elements we can use the same 
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.check.type" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.check.type</a> property with the same possible 
+values as for checkboxes. Also, to indicate which option is selected when opening the document, we can use the 
+<a href="../../config.reference.html#net.sf.jasperreports.export.pdf.field.checked" target="_blank" class="element">net.sf.jasperreports.export.pdf.field.checked</a> property.
+<br>
+
+<br>
+
+<b>Example:</b>
+
+<pre>
+&lt;textField&gt;
+  &lt;reportElement positionType="Float" mode="Opaque" x="250" y="0" width="25" height="25"&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.name" value="MyRadioGroup"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.type" value="Radio"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.check.type" value="Check"/&gt;
+  &lt;/reportElement&gt;
+  &lt;box&gt;
+    &lt;pen lineWidth="1"/&gt;
+  &lt;/box&gt;
+  &lt;textFieldExpression&gt;&lt;![CDATA["This text does not matter in PDF export."]] &gt;&lt;/textFieldExpression&gt;
+&lt;/textField&gt;
+&lt;textField&gt;
+  &lt;reportElement positionType="Float" mode="Opaque" x="250" y="0" width="25" height="25"&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.name" value="MyRadioGroup"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.type" value="Radio"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.check.type" value="Circle"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.checked" value="true"/&gt;
+  &lt;/reportElement&gt;
+  &lt;box&gt;
+    &lt;pen lineWidth="1"/&gt;
+  &lt;/box&gt;
+  &lt;textFieldExpression&gt;&lt;![CDATA["This text does not matter in PDF export."]] &gt;&lt;/textFieldExpression&gt;
+&lt;/textField&gt;
+&lt;textField&gt;
+  &lt;reportElement positionType="Float" mode="Opaque" x="250" y="0" width="25" height="25"&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.name" value="MyRadioGroup"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.type" value="Radio"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.check.type" value="Cross"/&gt;
+  &lt;/reportElement&gt;
+  &lt;box&gt;
+    &lt;pen lineWidth="1"/&gt;
+  &lt;/box&gt;
+  &lt;textFieldExpression&gt;&lt;![CDATA["This text does not matter in PDF export."]] &gt;&lt;/textFieldExpression&gt;
+&lt;/textField&gt;
+&lt;textField&gt;
+  &lt;reportElement positionType="Float" mode="Opaque" x="250" y="0" width="25" height="25"&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.name" value="MyRadioGroup"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.type" value="Radio"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.check.type" value="Diamond"/&gt;
+  &lt;/reportElement&gt;
+  &lt;box&gt;
+    &lt;pen lineWidth="1"/&gt;
+  &lt;/box&gt;
+  &lt;textFieldExpression&gt;&lt;![CDATA["This text does not matter in PDF export."]] &gt;&lt;/textFieldExpression&gt;
+&lt;/textField&gt;
+&lt;textField&gt;
+  &lt;reportElement positionType="Float" mode="Opaque" x="250" y="0" width="25" height="25"&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.name" value="MyRadioGroup"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.type" value="Radio"/&gt;
+    &lt;property name="net.sf.jasperreports.export.pdf.field.check.type" value="Square"/&gt;
+  &lt;/reportElement&gt;
+  &lt;box&gt;
+    &lt;pen lineWidth="1"/&gt;
+  &lt;/box&gt;
+  &lt;textFieldExpression&gt;&lt;![CDATA["This text does not matter in PDF export."]] &gt;&lt;/textFieldExpression&gt;
+&lt;/textField&gt;</pre>
+
+<a name="limitations" href="../../sample.reference/forms/index.html#limitations" class="subtitle">Known Limitations and Issues</a>
+
+<ol>
+
+<li>Radio groups cannot overflow on the next page.</li>
+
+<li>Radio group options cannot be made read-only.</li>
+
+</ol>
+
+<a name="runSample" href="../../sample.reference/forms/index.html#runSample" class="subtitle">Running the Sample</a>
+
+<br>
+
+<br>
+Running the sample requires the <a href="http://ant.apache.org/" target="_blank" class="element">Apache Ant</a> library. Make sure that <span class="code"><code>ant</code></span> is already installed on your system (version 1.5 or later).
+<br>
+In a command prompt/terminal window set the current folder to <span class="code"><code>demo/samples/forms</code></span> within the JasperReports source project and run the <span class="code"><code>&gt; ant test view</code></span> command.
+<br>
+It will generate all supported document types containing the sample report in the <span class="code"><code>demo/samples/forms/build/reports</code></span> directory. 
+<br>
+Then the report will open in the JasperReports internal viewer. You could open the PDF generated document and see how it differs from other generated outputs.
+    </span></td>
+</tr>
+<tr>
+<td colspan="6">
+<br>
+</td>
+</tr>
+</table>
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td>
+<hr size="1">
+</td>
+</tr>
+<tr>
+<td align="center"><span class="copy">&copy; 2001-<script language="javascript">document.write((new Date()).getFullYear())</script> TIBCO Software Inc. <a class="copy" target="_blank" href="http://www.jaspersoft.com">www.jaspersoft.com</a></span></td>
+</tr>
+</table>
+</body>
+</html>

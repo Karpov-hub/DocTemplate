@@ -1,0 +1,36 @@
+{
+  "name": "@app/fileprovider",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src --out-dir ./dist --source-maps",
+    "watch": "babel src --out-dir ./dist --source-maps --watch",
+    "test": "export NODE_ENV=localtest; ./node_modules/.bin/mocha --colors --timeout 10000 -b --exit --require @babel/register"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@app/config": "^0.0.1",
+    "@app/db": "^1.0.0",
+    "@aws-sdk/client-s3": "^3.17.0",
+    "image-watermark": "0.0.7",
+    "minio": "^7.0.14",
+    "uuid": "^3.3.3",
+    "yandex-disk": "^0.0.8",
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/register": "^7.4.0",
+    "babel-plugin-transform-optional-chaining": "^7.0.0-beta.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^7.0.0",
+    "nodemon": "^1.18.11"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.1.4"
+  }
+}

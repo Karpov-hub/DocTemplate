@@ -1,0 +1,57 @@
+{
+  "development": {
+    "username": "hse",
+    "password": "hse",
+    "database": "dtdb",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "seederStorage": "sequelize",
+    "logging": false,
+    "seederStorageTableName": "sequelize_data"
+  },
+  "test": {
+    "username": "hse",
+    "password": "hse",
+    "database": "dtdb_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "localtest": {
+    "username": "hse",
+    "password": "hse",
+    "database": "dtdb_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "staging": {
+    "use_env_variable": "DB_CREDS",
+    "dialect": "postgres",
+    "seederStorage": "sequelize",
+    "logging": false,
+    "seederStorageTableName": "sequelize_data",
+    "schema": "doctemplate",
+    "searchPath": "doctemplate",
+    "dialectOptions": {
+      "prependSearchPath": true
+    }
+  },
+  "production": {
+    "use_env_variable": "DB_CREDS",
+    "dialect": "postgres",
+    "seederStorage": "sequelize",
+    "logging": false,
+    "seederStorageTableName": "sequelize_data"
+  },
+  "docker": {
+    "username": "docker",
+    "password": "docker",
+    "database": "doctemplate",
+    "host": "postgres",
+    "port": "5432",
+    "dialect": "postgres",
+    "seederStorage": "sequelize",
+    "logging": false,
+    "seederStorageTableName": "sequelize_data"
+  }
+}

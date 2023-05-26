@@ -1,0 +1,13 @@
+node_modules
+yarn.lock
+/build
+admin/bootstrap.json
+admin/bootstrap.jsonp
+admin/build
+*/dist
+admin/sencha-error*
+app/swagger/swagger-output.json
+.env
+lerna-debug.*
+bots/*/dist
+packages/*/dist
